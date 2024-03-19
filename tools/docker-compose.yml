@@ -2,9 +2,8 @@ nexus:
   build: ./nexus
   ports:
     - "18081:8081"
-
-# Disable this for use on MAC 
-  volumes:
+    
+  volumes:  # Disable this for use on MAC 
     - /mnt/dockervolumes/data/nexus:/sonatype-work
 
 jenkins:

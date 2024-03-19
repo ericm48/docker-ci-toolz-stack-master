@@ -1,0 +1,10 @@
+---
+version: 2
+services:
+  nexus:
+    image: ericm24/dockercitoolstackmaster_nexus:latest
+    ports:
+      - "18081:8081"
+
+    volumes:
+      - /mnt/dockervolumes/data/nexus:/sonatype-work

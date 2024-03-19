@@ -2,12 +2,7 @@
 version: 2
 services:
   jenkins:
-    build:
-      context: ./jenkins
-      dockerfile: Dockerfile
-      args:
-        - DOCKER_HOST_IP=${DOCKER_HOST_IP}
-
+    image: ericm24/dockercitoolstackmaster_jenkins:latest
     ports:
       - "18080:8080"
 #
