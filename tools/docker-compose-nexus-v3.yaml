@@ -1,8 +1,9 @@
 ---
-version: 2
+version: "3"
 services:
   nexus:
-    image: ericm24/dockercitoolstackmaster_nexus:latest
+    image: ericm24/dockercitoolstackmaster_nexus2:2.11.4-01
+    container_name: nexus-2.11.4-01
     ports:
       - "18081:8081"
 

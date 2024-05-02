@@ -1,8 +1,9 @@
 ---
-version: 2
+version: "3"
 services:
   jenkins:
-    image: ericm24/dockercitoolstackmaster_jenkins:latest
+    image: ericm24/dockercitoolstackmaster_jenkins:1.642.2
+    container_name: jenkins-1.642.2
     ports:
       - "18080:8080"
 #
