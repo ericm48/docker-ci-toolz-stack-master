@@ -2,10 +2,10 @@
 version: "3"
 services:
   nexus:
-    image: ericm24/dockercitoolstackmaster_nexus2:2.11.4-01
+    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_nexus:2.11.4-01
     container_name: nexus-2.11.4-01
     ports:
-      - "18081:8081"
+      - "8081:8081"
 
     volumes:
       - /mnt/dockervolumes/data/nexus:/sonatype-work

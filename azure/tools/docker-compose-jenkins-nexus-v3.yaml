@@ -2,7 +2,7 @@
 version: "3"
 services:
   jenkins:
-    image: ericm24/dockercitoolstackmaster_jenkins:1.642.2
+    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_jenkins:1.642.2
     container_name: jenkins-1.642.2
     ports:
       - "8080:8080"
@@ -16,7 +16,7 @@ services:
       - /mnt/dockervolumes/data/jenkins:/var/jenkins_home
 
   nexus:
-    image: ericm24/dockercitoolstackmaster_nexus2:2.11.4-01
+    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_nexus:2.11.4-01
     container_name: nexus-2.11.4-01
     ports:
       - "8081:8081"

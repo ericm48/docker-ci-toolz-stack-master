@@ -5,7 +5,7 @@ services:
     image: ericm24/dockercitoolstackmaster_jenkins:1.642.2
     container_name: jenkins-1.642.2
     ports:
-      - "18080:8080"
+      - "8080:8080"
 #
 # Remember!!! Environment only applies to runtime, NOT BUILDTIME for docker, so no --build-args (until docker-compose version 1.9.0.x)
 #
