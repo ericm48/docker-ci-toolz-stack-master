@@ -2,8 +2,8 @@
 version: "3"
 services:
   nexus:
-    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_nexus:2.11.4-01
-    container_name: nexus-2.11.4-01
+    image: harbor04.azure.csp-si-tiger.net/ericm48/nexus:3.67.1-01-j8
+    container_name: nexus-3.67.1-01-j8
     ports:
       - "8081:8081"
 
