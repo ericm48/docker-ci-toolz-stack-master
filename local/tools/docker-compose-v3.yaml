@@ -25,8 +25,8 @@ services:
       - /mnt/dockervolumes/data/jenkins:/var/jenkins_home
 
   nexus:
-    image: ericm24/dockercitoolstackmaster_nexus:2.11.4-01
-    container_name: nexus-2.11.4-01
+    image: ericm24/dockercitoolstackmaster_nexus:3.67.1-01-j8
+    container_name: nexus-3.67.1-01-j8
     ports:
       - "8081:8081"
 
