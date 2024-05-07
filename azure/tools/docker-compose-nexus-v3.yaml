@@ -9,4 +9,3 @@ services:
 
     volumes:
       - /mnt/dockervolumes/data/nexus-data:/nexus-data 
-#      - /mnt/dockervolumes/data/nexus:/sonatype-work
