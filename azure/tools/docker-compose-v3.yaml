@@ -6,8 +6,17 @@ services:
     container_name: nginx-1.19.3
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/etc/ssl/nginx/full-chain.pem:/etc/nginx/ssl/full-chain.pem
+      - ./nginx/etc/ssl/nginx/privkey1.pem:/etc/nginx/ssl/privkey1.pem
+      - ./nginx/etc/ssl/nginx/nginx.azure.csp-si-tiger.net-root.crt:/etc/nginx/ssl/nginx.azure.csp-si-tiger.net-root.crt
+
+      - ./nginx/etc/ssl/nexus/full-chain.pem:/etc/nexus/ssl/full-chain.pem
+      - ./nginx/etc/ssl/nexus/privkey1.pem:/etc/nexus/ssl/privkey1.pem
+
+
 
     network_mode: host
 

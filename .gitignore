@@ -22,6 +22,10 @@
 **/logs/*
 **/logs./*
 
+#################
+## SSL
+#################
+privkey1.pem
 
 #################
 ## Maven
@@ -63,6 +67,7 @@ local.properties
 ## UltraEdit    
 ##############
 *.bak
+*.bak*
 
 ##############
 ## Cloud9
