@@ -16,8 +16,6 @@ services:
       - ./nginx/etc/ssl/nexus/full-chain.pem:/etc/nexus/ssl/full-chain.pem
       - ./nginx/etc/ssl/nexus/privkey1.pem:/etc/nexus/ssl/privkey1.pem
 
-
-
     network_mode: host
 
   jenkins:
