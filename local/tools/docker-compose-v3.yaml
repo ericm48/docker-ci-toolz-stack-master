@@ -8,6 +8,7 @@ services:
       - 80:80
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /mnt/dockervolumes/var/log:/var/log      
 
     network_mode: host
 
