@@ -7,4 +7,6 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - /mnt/dockervolumes/data/nexus:/sonatype-work
+      - /mnt/dockervolumes/data/nexus-data:/nexus-data
+      #- /mnt/dockervolumes/data/nexus:/sonatype-work
+
