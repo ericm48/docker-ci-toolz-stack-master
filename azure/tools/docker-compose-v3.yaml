@@ -37,8 +37,8 @@ services:
       - DOCKER_HOST_IP=${DOCKER_HOST_IP}
 
   nexus:
-    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_nexus:3.69.0-java17           
-    container_name: nexus-3.69.0-java17
+    image: harbor04.azure.csp-si-tiger.net/ericm48/dockercitoolstackmaster_nexus:3.69.0-java11           
+    container_name: nexus-3.69.0-java11
 
     ports:
       - "8081:8081"
