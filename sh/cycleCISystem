@@ -108,7 +108,7 @@ usage(){
 	echo "Re-Starting CI System...."
 	echo " "
 	
-	tCMD="docker-compose -f ./docker-compose-v3.yaml up & "
+	tCMD="docker-compose -f ./docker-compose-v3.yaml up "
 	
 	$tCMD | tee -a $tLogFile
 	
