@@ -2,88 +2,113 @@
 #
 # Script that will:
 #
-#   1.  Pulls latest Source from git.
-#		2.  Shut down Docker CI System.
-#   3.  Optional: Delete data for that docker-app-volume.
-#		4.  Remove Existing Docker-Containers (Leaves Data-Volumes As-Is Default).
-#   5.  Remove Dangling Docker-Containers
+#		1.  Shut down Docker CI System.
+#		2.  Remove Existing Docker-Containers (Leaves Data-Volumes As-Is Default).
+#   3.  Remove Dangling Docker-Containers
 #
-#   6.  Rebuilds Docker Images:
-#          Jenkins
-#          Others?
-#
-#   7.  Re-Starts Docker Containers
+#   4.  Re-Starts Docker Containers
 #
 #	 set -x
 
+usage(){
+		echo " "
+		echo " "
+		echo " "
+		echo "Usage: $0 "
+		echo " "
+		echo " "
+		echo "   Completes docker-compose down then up on CI System."
+		echo " "
+		exit 1
+}
   
-   if [ $# -lt 1 ] 
-   	then
-   		echo " "
-   		echo " "
-   		echo " "
-			echo "Usage:   $0 gitPassword [hammerJenkinsData]"
-   		echo " "
-   		echo " "
-   		echo " "
-   		exit 1
-   fi
-   
-   tLogFile=
-   tLogFile="/data/txt/cycleCISystemLog.txt"
-   
-	 tPassword=
-	 tPassword=$1	 
+	i=0
+	for argz in "$@"
+	do
+	    #echo "Here be Arg.$i: $argz"
 
-	 rm "$tLogFile"
-	 
-	 cd /dev2/ansible/mservice/master/rm-monitoring
-	 
-	 echo " "
-	 echo "Updating From git....."
-   echo " "
-   
-   git remote set-url origin https://xUser:"$tPassword"@github.com/ericm24/repo1.git
-   
-   git pull | tee -a "$tLogFile"
-   
-	 echo " "
-	 echo "Shutting Down CI System...."
-   echo " "
-	 		   
-	 dockerCITools stop | tee -a "$tLogFile"
+	 		if [ $i -gt 0 ]
+	   		then
+					case "$argz" in
 
-	 for i do
+					    -H)
+									usage
+									exit 3
+					        ;;
 
-			 case "$i" in 
-			     hammerJenkinsData)
-			       echo " "
-			       echo "*** Deleting Jenkins Volume!!! ***"
-			       echo " "
-			       rm -rfv /mnt/dockervolumes/data/jenkins | tee -a "$tLogFile"
-			       ;;
-			    *)
-       esac
-       
-	 done
+					    -h)
+									usage
+									exit 3
+									;;
 
-	 echo " "
-	 echo "Remove Existing Containers...."
-   echo " "
-	 
-	 killDockerDanglerz | tee -a "$tLogFile"
+					    --H)
+									usage
+									exit 3
+					        ;;
 
-	 cd /dev2/ansible/mservice/master/rm-monitoring/docker/docker-ci-tool-stack-master
-	 
-	 echo " "
-	 echo "Rebuilding Jenkins..."
-   echo " "
-	 
-	 docker-compose build --no-cache jenkins | tee -a "$tLogFile"
+					    --h)
+									usage
+									exit 3
+									;;
 
-	 echo " "
-	 echo "Re-Starting CI System...."
-   echo " "
+					    -help)
+									usage
+									exit 3
+					        ;;
 
-	 dockerCITools start | tee -a "$tLogFile" &
+					    --help)
+									usage
+									exit 3
+									;;
 
+
+					    *)
+					    		#echo "Invalid Option: $var"
+					    		#usage
+					    		#exit 77
+					        ;;
+					esac
+
+			fi
+
+			((i=i+1))
+
+	done
+	   
+	tLogFile=
+	tLogFile="/data/txt/cycleCISystemLog.txt"
+	
+	tPassword=
+	tPassword=$1	 
+	
+	rm "$tLogFile"
+	
+	cd /dev2/docker/eric/master/docker-ci-toolz-stack-master/azure/tools
+	
+	echo " "
+	echo "Shutting Down CI System...."
+	echo " "
+		   
+	docker-compose -f ./docker-compose-v3.yaml down | tee -a "$tLogFile"
+	
+	echo " "
+	echo "Remove Any Existing Containers...."
+	echo " "
+	
+	/dev2/sh/killDockerDanglerz | tee -a "$tLogFile"
+	
+	echo " "
+	echo "Remove Any Exited Containers...."
+	echo " "
+	
+	/dev2/sh/killDockerContainersExited | tee -a "$tLogFile"
+	
+	echo " "
+	echo "Re-Starting CI System...."
+	echo " "
+	
+	docker-compose -f ./docker-compose-v3.yaml up & | tee -a "$tLogFile"
+	
+	exit 0
+	
+	
