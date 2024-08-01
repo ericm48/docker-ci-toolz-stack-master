@@ -90,7 +90,7 @@ usage(){
 		   
 	tCMD="docker-compose -f ./docker-compose-v3.yaml down | tee -a $tLogFile"
 	
-	$(tCMD)
+	$tCMD
 	
 	echo " "
 	echo "Remove Any Existing Containers...."
@@ -110,7 +110,7 @@ usage(){
 	
 	tCMD="docker-compose -f ./docker-compose-v3.yaml up | tee -a $tLogFile"
 	
-	$(tCMD) &
+	$tCMD &
 	
 	exit 0
 	
