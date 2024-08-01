@@ -88,9 +88,9 @@ usage(){
 	echo "Shutting Down CI System...."
 	echo " "
 		   
-	tCMD="docker-compose -f ./docker-compose-v3.yaml down | tee -a $tLogFile"
+	tCMD="docker-compose -f ./docker-compose-v3.yaml down " 
 	
-	$tCMD
+	$tCMD | tee -a $tLogFile
 	
 	echo " "
 	echo "Remove Any Existing Containers...."
@@ -108,9 +108,9 @@ usage(){
 	echo "Re-Starting CI System...."
 	echo " "
 	
-	tCMD="docker-compose -f ./docker-compose-v3.yaml up | tee -a $tLogFile"
+	tCMD="docker-compose -f ./docker-compose-v3.yaml up & "
 	
-	$tCMD
+	$tCMD | tee -a $tLogFile
 	
 	exit 0
 	
