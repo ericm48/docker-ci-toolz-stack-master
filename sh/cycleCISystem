@@ -78,8 +78,7 @@ usage(){
 	tLogFile=
 	tLogFile="/data/txt/cycleCISystemLog.txt"
 	
-	tPassword=
-	tPassword=$1	 
+	tCMD=
 	
 	rm "$tLogFile"
 	
@@ -89,7 +88,9 @@ usage(){
 	echo "Shutting Down CI System...."
 	echo " "
 		   
-	docker-compose -f ./docker-compose-v3.yaml down | tee -a "$tLogFile"
+	tCMD="docker-compose -f ./docker-compose-v3.yaml down | tee -a $tLogFile"
+	
+	$tCMD
 	
 	echo " "
 	echo "Remove Any Existing Containers...."
@@ -107,7 +108,9 @@ usage(){
 	echo "Re-Starting CI System...."
 	echo " "
 	
-	docker-compose -f ./docker-compose-v3.yaml up & | tee -a "$tLogFile"
+	tCMD="docker-compose -f ./docker-compose-v3.yaml up & | tee -a $tLogFile"
+	
+	$tCMD	
 	
 	exit 0
 	
