@@ -110,7 +110,7 @@ usage(){
 	
 	tCMD="docker-compose -f ./docker-compose-v3.yaml up "
 	
-	$tCMD | tee -a $tLogFile
+	$tCMD | tee -a $tLogFile &
 	
 	exit 0
 	
