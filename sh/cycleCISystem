@@ -8,7 +8,7 @@
 #
 #   4.  Re-Starts Docker Containers
 #
-#	 set -x
+#	  set -x
 
 usage(){
 		echo " "
@@ -27,7 +27,7 @@ usage(){
 	do
 	    #echo "Here be Arg.$i: $argz"
 
-	 		if [ $i -gt 0 ]
+	 		if [ "$#" -gt 0 ]
 	   		then
 					case "$argz" in
 
