@@ -82,6 +82,11 @@ usage(){
 	
 	rm "$tLogFile"
 	
+	dateTimeNow=
+	dateTimeNow=$(date +"%Y-%m-%d %H:%M:%S")	
+	
+	echo "$dateTimeNow $0 Begins..." | tee -a "$tLogFile"
+	
 	cd /dev2/docker/eric/master/docker-ci-toolz-stack-master/azure/tools
 	
 	echo " "
@@ -111,6 +116,9 @@ usage(){
 	tCMD="docker-compose -f ./docker-compose-v3.yaml up "
 	
 	$tCMD | tee -a $tLogFile &
+	
+	dateTimeNow=$(date +"%Y-%m-%d %H:%M:%S")		
+	echo "$dateTimeNow $0 Ends..." | tee -a "$tLogFile"	
 	
 	exit 0
 	
