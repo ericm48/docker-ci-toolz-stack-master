@@ -90,7 +90,7 @@ usage(){
 	cd /dev2/docker/eric/master/docker-ci-toolz-stack-master/azure/tools
 	
 	echo " "
-	echo "Shutting Down CI System...."
+	echo "Shutting Down CI System...." | tee -a "$tLogFile"		
 	echo " "
 		   
 	tCMD="docker-compose -f ./docker-compose-v3.yaml down " 
@@ -98,19 +98,19 @@ usage(){
 	$tCMD | tee -a $tLogFile
 	
 	echo " "
-	echo "Remove Any Existing Containers...."
+	echo "Remove Any Existing Containers...." | tee -a "$tLogFile"		
 	echo " "
 	
 	/dev2/sh/killDockerDanglerz | tee -a "$tLogFile"
 	
 	echo " "
-	echo "Remove Any Exited Containers...."
+	echo "Remove Any Exited Containers...." | tee -a "$tLogFile"		
 	echo " "
 	
 	/dev2/sh/killDockerContainersExited | tee -a "$tLogFile"
 	
 	echo " "
-	echo "Re-Starting CI System...."
+	echo "Re-Starting CI System...." | tee -a "$tLogFile"		
 	echo " "
 	
 	tCMD="docker-compose -f ./docker-compose-v3.yaml up "
