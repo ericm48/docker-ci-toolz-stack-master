@@ -10,18 +10,18 @@ services:
     volumes:
       # NginX:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/etc/ssl/nginx/full-chain.pem:/etc/nginx/ssl/full-chain.pem
-      - ./nginx/etc/ssl/nginx/privkey1.pem:/etc/nginx/ssl/privkey1.pem
+      - ./nginx/etc/ssl/nginx/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+      - ./nginx/etc/ssl/nginx/privkey.pem:/etc/nginx/ssl/privkey.pem
       - ./nginx/etc/ssl/nginx/nginx.azure.csp-si-tiger.net-root.crt:/etc/nginx/ssl/nginx.azure.csp-si-tiger.net-root.crt
       - /mnt/dockervolumes/var/log:/var/log
 
       # Nexus:
-      - ./nginx/etc/ssl/nexus/full-chain.pem:/etc/nexus/ssl/full-chain.pem
-      - ./nginx/etc/ssl/nexus/privkey1.pem:/etc/nexus/ssl/privkey1.pem
+      - ./nginx/etc/ssl/nexus/fullchain.pem:/etc/nexus/ssl/fullchain.pem
+      - ./nginx/etc/ssl/nexus/privkey.pem:/etc/nexus/ssl/privkey.pem
       
       # Jenkins:
-      - ./nginx/etc/ssl/jenkins/full-chain.pem:/etc/jenkins/ssl/full-chain.pem
-      - ./nginx/etc/ssl/jenkins/privkey1.pem:/etc/jenkins/ssl/privkey1.pem
+      - ./nginx/etc/ssl/jenkins/fullchain.pem:/etc/jenkins/ssl/fullchain.pem
+      - ./nginx/etc/ssl/jenkins/privkey.pem:/etc/jenkins/ssl/privkey.pem
 
     network_mode: host
 
