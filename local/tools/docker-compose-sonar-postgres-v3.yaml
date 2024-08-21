@@ -12,12 +12,12 @@ services:
       SONAR_JDBC_PASSWORD: sonar
     ports:
       - "9001:9000"
-    volumes:
-      - sonarqube_conf:/opt/sonarqube/conf
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_logs:/opt/sonarqube/logs
-      - sonarqube_temp:/opt/sonarqube/temp
+    volumes:  
+     - /mnt/dockervolumes/data/sonarqube/conf:/opt/sonarqube/conf
+     - /mnt/dockervolumes/data/sonarqube/data:/opt/sonarqube/data
+     - /mnt/dockervolumes/data/sonarqube/extensions:/opt/sonarqube/extensions
+     - /mnt/dockervolumes/data/sonarqube/temp:/opt/sonarqube/temp
+     - /mnt/dockervolumes/var/log/sonarqube:/opt/sonarqube/logs 
 
   sonar_db:
     image: postgres:13.16-bullseye #postgres:13
@@ -26,14 +26,6 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonar
     volumes:
-      - sonar_db:/var/lib/postgresql
-      - sonar_db_data:/var/lib/postgresql/data
-
-volumes:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_logs:
-  sonarqube_temp:
-  sonar_db:
-  sonar_db_data:
+      - /mnt/dockervolumes/data/postgresql:/var/lib/postgresql
+      - /mnt/dockervolumes/data/postgresql/data:/var/lib/postgresql/data
+      
