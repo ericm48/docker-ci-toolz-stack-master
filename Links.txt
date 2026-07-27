@@ -1,0 +1,16 @@
+#
+# Links
+#
+
+http://localhost:18080/																																		// DockerCIStackJenkins
+http://localhost:19000/																																		// DockerCIStackSonarQube
+http://localhost:18081/nexus/#welcome																											// DockerCIStackNexus
+http://localhost:10080/users/sign_in																											// DockerCIStackGitLab
+http://localhost:14444/grid/console																												// DockerCIStackSeleniumGrid
+
+ 
+http://192.168.59.103:18080/																															// DockerCIStackJenkins
+http://192.168.59.103:19000/																															// DockerCIStackSonarQube
+http://192.168.59.103:18081/nexus/#welcome																								// DockerCIStackNexus
+http://192.168.59.103:10080/users/sign_in																									// DockerCIStackGitLab
+http://192.168.59.103:4444/grid/console																										// DockerCIStackSeleniumGrid
